@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosa porti per entrare su un'isola</title>
+    <script>
+        function checkWord() {
+            let word = document.getElementById("wordInput").value.toLowerCase();
+            let message = "";
+            if ((word.match(/i/g) || []).length === 1) {
+                message = "'" + word + "' entra";
+            } else {
+                message = "'" + word + "' non entra";
+            }
+            document.getElementById("result").innerText = message;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Cosa porti per entrare sull'isola?</h1>
+    <form onsubmit="event.preventDefault(); checkWord();">
+        <label for="wordInput">Cosa entra sull'isola:</label>
+        <input type="text" id="wordInput" name="wordInput">
+        <button type="submit">Verifica</button>
+    </form>
+    <p id="result"></p>
+</body>
+
+</html>
