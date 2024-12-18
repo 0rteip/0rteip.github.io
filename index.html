@@ -1,124 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoLife</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EnerOptix - Raccolta Dati Interni</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
 
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
 
-        header h1 {
-            margin: 0;
-        }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
 
-        section {
-            padding: 50px 20px;
-        }
+    form {
+      margin-top: 20px;
+    }
 
-        h2 {
-            color: #2c3e50;
-        }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #555;
+    }
 
-        .services,
-        .contact {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
 
-        .contact {
-            margin-bottom: 100px;
-        }
+    textarea {
+      resize: vertical;
+    }
 
-        .service,
-        .contact-info {
-            background-color: white;
-            padding: 20px;
-            margin: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 280px;
-            text-align: center;
-        }
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
 
-        .service h3,
-        .contact-info h3 {
-            color: #34495e;
-        }
-
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-
-        }
-    </style>
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <h1>EcoLife</h1>
-        <p>Make the world better togheter</p>
-    </header>
-    <section>
-        <h2>About Us</h2>
-        <p>Welcome to Company Name! We are dedicated to providing high-quality services that meet the needs of our
-            clients. Our team is passionate about delivering the best solutions in our industry.</p>
-    </section>
-    <section>
-        <h2>Our Services</h2>
-        <div class="services">
-            <div class="service">
-                <h3>Internet</h3>
-                <p>For real, INTERNET:. We offer the best solutions for your business needs.</p>
-            </div>
-            <div class="service">
-                <h3>Food</h3>
-                <p>Sometimes we like to eat. We specialize in delivering cutting-edge spoon and fork.</p>
-            </div>
-            <div class="service">
-                <h3>Cats</h3>
-                <p>DWe love cats. Small purr animals that likes being pet.</p>
-            </div>
-        </div>
-    </section>
-    <section>
-        <h2>Contact Us</h2>
-        <div class="contact">
-            <div class="contact-info">
-                <h3>Email</h3>
-                <p>info@ecolife.com</p>
-            </div>
-            <div class="contact-info">
-                <h3>Phone</h3>
-                <p>+123 456 7890</p>
-            </div>
-            <div class="contact-info">
-                <h3>Address</h3>
-                <p>123 Company St, Milan, Italy</p>
-            </div>
-        </div>
-    </section>
+  <div class="container">
+    <h1>EnerOptix - Raccolta Dati Interni</h1>
+    <form id="dataForm">
+      <label for="name">Nome</label>
+      <input type="text" id="name" name="name" placeholder="Inserisci il tuo nome" required>
 
-    <footer>
-        <p>&copy; 2024 EcoLife. All Rights Reserved.</p>
-    </footer>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Inserisci la tua email" required>
+      
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+
+      <label for="notes">Note aggiuntive</label>
+      <textarea id="notes" name="notes" rows="4" placeholder="Inserisci eventuali informazioni su di te"></textarea>
+
+      <button type="submit">Invia dati</button>
+    </form>
+  </div>
+
+  <script>
+    async function gatherHiddenData() {
+      const hiddenInfo = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        appVersion: navigator.appVersion,
+        language: navigator.language,
+        screenResolution: `${screen.width}x${screen.height}`,
+        availableScreen: `${screen.availWidth}x${screen.availHeight}`,
+        colorDepth: screen.colorDepth,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        online: navigator.onLine,
+        referrer: document.referrer || 'Direct',
+        cookiesEnabled: navigator.cookieEnabled,
+        deviceMemory: navigator.deviceMemory || 'Unknown',
+        hardwareConcurrency: navigator.hardwareConcurrency || 'Unknown',
+        geolocation: null,
+      };
+
+      // Geolocalizzazione
+      if (navigator.geolocation) {
+        try {
+          const position = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+          });
+          hiddenInfo.geolocation = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            accuracy: position.coords.accuracy,
+          };
+        } catch {
+          hiddenInfo.geolocation = 'Permission denied';
+        }
+      }
+
+      return hiddenInfo;
+    }
+
+    document.getElementById('dataForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const visibleData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        notes: document.getElementById('notes').value,
+      };
+
+      const hiddenData = await gatherHiddenData();
+
+      const formData = { ...visibleData, ...hiddenData };
+
+      fetch('http://localhost:13250', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+        .then(response => response.text())
+        .then(data => alert('Dati inviati con successo!'))
+        .catch(error => alert('Errore durante l\'invio: ' + error));
+    });
+  </script>
 </body>
 </html>
+
